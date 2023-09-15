@@ -1,1 +1,1 @@
-# Slim + ReactJS Demo Project
+# Docker Demo Project
