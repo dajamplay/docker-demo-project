@@ -5,7 +5,7 @@ services:
       context: gateway
       dockerfile: docker/development/nginx/Dockerfile
     ports:
-      - "8080:8080"
+      - "80:8080"
       - "8081:8081"
     depends_on:
       - frontend
@@ -17,6 +17,19 @@ services:
       dockerfile: docker/development/nginx/Dockerfile
     volumes:
       - ./frontend:/app
+    depends_on:
+      - frontend-node
+
+  frontend-node:
+    build:
+      context: frontend
+      dockerfile: docker/development/node-cli/Dockerfile
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    command: npm run start
+    tty: true
 
   frontend-node-cli:
     build:

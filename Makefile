@@ -25,5 +25,9 @@ docker-build:
 	docker-compose build --pull
 
 ### Frontend ###
+
 create-react-app:
 	docker-compose run --rm frontend-node-cli npx create-react-app react-app
+
+build-react-app:
+	docker-compose run --rm frontend-node-cli npm run build
