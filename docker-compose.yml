@@ -3,38 +3,40 @@ services:
   gateway:
     build:
       context: gateway
-      dockerfile: docker/production/nginx/Dockerfile
+      dockerfile: docker/development/nginx/Dockerfile
     ports:
-      - "80:80"
+      - "8080:8080"
+      - "8081:8081"
     depends_on:
       - frontend
       - api
-    restart: always
 
   frontend:
     build:
       context: frontend
-      dockerfile: docker/production/nginx/Dockerfile
-    restart: always
+      dockerfile: docker/development/nginx/Dockerfile
+    volumes:
+      - ./frontend:/app
+
+  frontend-node-cli:
+    build:
+      context: frontend
+      dockerfile: docker/development/node-cli/Dockerfile
+    volumes:
+      - ./frontend:/app
 
   api:
     build:
       context: api
-      dockerfile: docker/production/nginx/Dockerfile
+      dockerfile: docker/development/nginx/Dockerfile
+    volumes:
+      - ./api:/app
     depends_on:
       - api-php-fpm
-    restart: always
 
   api-php-fpm:
     build:
       context: api
-      dockerfile: docker/production/php-fpm/Dockerfile
-    restart: always
-
-#  certbot:
-#    image: certbot/certbot
-#    restart: unless-stopped
-#    volumes:
-#      - ./certbot/conf:/etc/letsencrypt
-#      - ./certbot/www:/var/www/certbot
-#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      dockerfile: docker/development/php-fpm/Dockerfile
+    volumes:
+      - ./api:/app

@@ -5,8 +5,14 @@
 ```docker```  
 ```docker-compose```  
 
+Development build  
+```docker-compose.yml```
+
+Production build  
+```docker-compose-prod.yml```
+
 Прописать домен
-```gateway/docker/production/nginx/conf.d/frontend.conf```
+```gateway/docker/production/nginx/conf.d/default.conf```
 
 ## SSH (Если сертификат еще не выпущен)  
 
@@ -18,6 +24,6 @@
 ```chmod +x init-letsencrypt.sh```  
 
 Создаем сертификат с поднятием временного docker контейнера  
-```./init-letsencrypt.sh```  
+```./init-letsencrypt.sh```
 
 

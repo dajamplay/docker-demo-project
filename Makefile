@@ -23,3 +23,7 @@ docker-pull:
 # --pull обновление образов для Dockerfile
 docker-build:
 	docker-compose build --pull
+
+### Frontend ###
+create-react-app:
+	docker-compose run --rm frontend-node-cli npx create-react-app react-app
