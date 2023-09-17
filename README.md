@@ -1,8 +1,12 @@
 # Docker Demo Project  
 
-## Базовые установки  
+## Базовые настройки
+Установить на сервере  
+```docker```  
+```docker-compose```  
 
-Coming soon  
+Прописать домен
+```gateway/docker/production/nginx/conf.d/frontend.conf```
 
 ## SSH (Если сертификат еще не выпущен)  
 
