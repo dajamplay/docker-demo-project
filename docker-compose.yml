@@ -26,10 +26,10 @@ services:
       dockerfile: docker/development/node-cli/Dockerfile
     volumes:
       - ./frontend:/app
-    ports:
-      - "3000:3000"
     command: npm run start
     tty: true
+    environment:
+      - WDS_SOCKET_PORT=0
 
   frontend-node-cli:
     build:
