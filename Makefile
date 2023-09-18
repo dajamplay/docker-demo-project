@@ -31,3 +31,6 @@ create-react-app:
 
 build-react-app:
 	docker-compose run --rm frontend-node-cli npm run build
+
+npm-install:
+	docker-compose run --rm frontend-node-cli npm install
